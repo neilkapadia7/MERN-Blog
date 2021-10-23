@@ -8,3 +8,4 @@ export const BLOGS_RESULT = 'BLOGS_RESULT';
 export const BLOGS_ERROR = 'BLOGS_ERROR';
 export const END_LOADING = 'END_LOADING';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';

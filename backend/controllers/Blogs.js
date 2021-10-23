@@ -19,7 +19,7 @@ module.exports = {
                 userId: req.user._id
             }).save();
 
-            return Responder.respondWithSuccess(req, res, blogs , 'Successfully Added To Favourites!');    
+            return Responder.respondWithSuccess(req, res, blogs , 'Successfully Submitted!');    
         }
         catch(err) {
             console.log(err)
@@ -81,7 +81,7 @@ module.exports = {
         //     if(!checkUser || (checkUser && checkUser.userType !== 1)) 
         //         return Responder.respondWithFalseSuccess(req, res, {}, 'Not Enough Permissions');
 
-            const blogs = await Blogs.find({isApproved: true})
+            const blogs = await Blogs.find({isApproved: true}).populate('userId', 'name email')
             let count = blogs.length
                 
             return Responder.respondWithSuccess(req, res, {blogs, count}, 'Approved Blogs Fetched')   
@@ -94,7 +94,7 @@ module.exports = {
 
 /**
     @route POST api/blogs/approve-blog
-    @description Aapprove Blog
+    @description Approve Blog
 */ 
     async approveBlog (req, res) {    
         try {

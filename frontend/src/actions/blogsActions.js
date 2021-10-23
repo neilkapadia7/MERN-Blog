@@ -1,4 +1,4 @@
-import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS} from '../constants/blogsConstant'
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE} from '../constants/blogsConstant'
 export const publishBlog = (payload) => {
     return {
         type: PUBLISH_BLOGS,
@@ -60,5 +60,11 @@ export const setLoading = () => {
 export const endLoading = () => {
     return {
         type: END_LOADING,
+    }
+}
+
+export const removeMessage = () => {
+    return {
+        type: REMOVE_MESSAGE,
     }
 }

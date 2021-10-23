@@ -5,6 +5,7 @@ import AddWriter from './components/auth/AddWriter';
 import Header from './components/general/Header';
 import Footer from './components/general/Footer';
 import HomeScreen from './components/blogs/home';
+import AddBlogs from './components/blogs/AddBlogs';
 // import FavouritesScreen from './components/blogs/Favourites';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' component={HomeScreen} exact/>
           <Route path='/login' component={Login} exact/>
           <Route path='/add-writer' component={AddWriter} exact/>
+          <Route path='/add-blog' component={AddBlogs} exact/>
           {/* <Route path='/discover/popular' component={HomeScreen} exact/>
           <Route path='/discover/latest' component={HomeScreen} exact/>
           <Route path='/discover/favourites' component={FavouritesScreen} exact/> */}

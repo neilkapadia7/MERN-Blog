@@ -1,11 +1,12 @@
-import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS} from '../constants/blogsConstant'
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE} from '../constants/blogsConstant'
 
 let initialState = {
     blogsData: [], 
     loading: false, 
     error: null,
     myBlogs: [],
-    rejectedBlogs: []
+    rejectedBlogs: [],
+    blogMessage: null,
 }
 
 export const blogsReducer = (state = initialState, action) => {
@@ -35,8 +36,14 @@ export const blogsReducer = (state = initialState, action) => {
           return {
             ...state,
             loading: false,
-            myBlogs: state.myBlogs.length > 0 ? [...state.myBlogs, action.payload] : [action.payload],
-            error: null          
+            myBlogs: state.myBlogs.length > 0 ? [...state.myBlogs, action.payload.data] : [action.payload.data],
+            error: null,
+            blogMessage: 'Successfully Submitted Blog' 
+          }
+        case REMOVE_MESSAGE:
+          return {
+            ...state,
+            blogMessage: null
           }
         case APPROVE_BLOGS:
           return {

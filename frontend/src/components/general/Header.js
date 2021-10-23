@@ -50,8 +50,10 @@ const Header = (props) => {
                       </LinkContainer>
                     }
 
-                    <Nav.Link onClick={() => 
+                    <Nav.Link onClick={() => {
                         dispatch(logout())
+                        history.push('/login')
+                      }  
                     }>Logout</Nav.Link>
                     </>
                     ) : (
