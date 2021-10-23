@@ -1,44 +1,61 @@
 import { call, put, takeLatest, all, select} from 'redux-saga/effects'
-import {GET_MOVIES, ADD_MOVIES} from '../constants/blogsConstant'
-import * as MoviesService from '../services/blogs'
-import * as MoviesAction from '../actions/blogsActions'
+import {GET_BLOGS, PUBLISH_BLOGS, APPROVE_BLOGS} from '../constants/blogsConstant'
+import * as BlogService from '../services/blogs'
+import * as BlogAction from '../actions/blogsActions'
 
-export function* getMoviesSaga() {
+export function* getBlogsSaga() {
     try {
-        const response = yield call(MoviesService.getFavourites);
+        const response = yield call(BlogService.getBlogs);
         if(!response.status) {
-          yield put(MoviesAction.moviesError(response.message ? response.message : response.data))
+          yield put(BlogAction.blogError(response.message ? response.message : response.data))
         }
         else {
-          yield put(MoviesAction.moviesResult(response.data.favourites))
+          yield put(BlogAction.blogsResult(response.data.favourites))
         }
     
       } catch (error) {
         console.log(error)
-        yield put(MoviesAction.moviesError(error.message))
+        yield put(BlogAction.blogError(error.message))
       }
 }
 
-export function* addMoviesSagaSaga(param) {
+export function* publishBlogSaga(param) {
       try {
-        const response = yield call(MoviesService.addFavourites, param.payload);
+        const response = yield call(BlogService.publishBlog, param.payload);
         if(!response.status) {
-          yield put(MoviesAction.moviesError(response.message ? response.message : response.data))
+          yield put(BlogAction.blogError(response.message ? response.message : response.data))
         }
         else {
-          yield put(MoviesAction.addMoviesResult(response))
+          yield put(BlogAction.publishBlogResult(response))
         }
     
       } catch (error) {
         console.log(error)
-        yield put(MoviesAction.moviesError(error.message))
+        yield put(BlogAction.blogError(error.message))
+      }
+}
+
+export function* approveBlogSaga(param) {
+      try {
+        const response = yield call(BlogService.approveBlog, param.payload);
+        if(!response.status) {
+          yield put(BlogAction.blogError(response.message ? response.message : response.data))
+        }
+        else {
+          yield put(BlogAction.aproveBlogResult(response))
+        }
+    
+      } catch (error) {
+        console.log(error)
+        yield put(BlogAction.blogError(error.message))
       }
 }
 
 
 export default function* actionWatcher() {
     yield all([
-        takeLatest(ADD_MOVIES, addMoviesSagaSaga),
-        takeLatest(GET_MOVIES, getMoviesSaga)
+        takeLatest(PUBLISH_BLOGS, publishBlogSaga),
+        takeLatest(APPROVE_BLOGS, approveBlogSaga),
+        takeLatest(GET_BLOGS, getBlogsSaga)
     ])
 }

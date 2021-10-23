@@ -12,12 +12,6 @@ const Header = (props) => {
   const location = useLocation()
   const history = useHistory()
 
-  useEffect(() => {
-      if(location.pathname === '/') {
-        history.push('/discover')
-      }
-  }, [history, location])
-
   const dispatch = useDispatch();
 
     return (
@@ -25,7 +19,7 @@ const Header = (props) => {
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
               <Container>
               <LinkContainer to='/'>
-                <Navbar.Brand>Capital Setu</Navbar.Brand>
+                <Navbar.Brand>Applore Blog</Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -34,39 +28,18 @@ const Header = (props) => {
               
                 {userInfo ? (
                   <>
-                    {/* <LinkContainer to='/'exact>
-                      <Nav.Link>Discover</Nav.Link>
-                    </LinkContainer> */}
-                    
-                    <NavDropdown title='Discover' id='category'>
-                        <LinkContainer to='/discover/popular'>
-                            <NavDropdown.Item>Popular</NavDropdown.Item>
-                        </LinkContainer>  
-                        <LinkContainer to='/discover/latest'>
-                            <NavDropdown.Item>Latest</NavDropdown.Item>
-                        </LinkContainer>  
-                        <LinkContainer to='/discover/favourites'>
-                            <NavDropdown.Item>Favourites</NavDropdown.Item>
-                        </LinkContainer>  
-                    </NavDropdown>
-
+                    <LinkContainer to='/'exact>
+                      <Nav.Link>Home</Nav.Link>
+                    </LinkContainer>
                     <Nav.Link onClick={() => 
                         dispatch(logout())
                     }>Logout</Nav.Link>
                     </>
                     ) : (
                   <>
-                  <NavDropdown title='Discover' id='category'>
-                    <LinkContainer to='/discover/popular'>
-                        <NavDropdown.Item>Popular</NavDropdown.Item>
-                    </LinkContainer>  
-                    <LinkContainer to='/discover/latest'>
-                        <NavDropdown.Item>Latest</NavDropdown.Item>
-                    </LinkContainer>  
-                    <LinkContainer to='/discover/favourites'>
-                        <NavDropdown.Item>Favourites</NavDropdown.Item>
-                    </LinkContainer>  
-                  </NavDropdown>
+                  <LinkContainer to='/'exact>
+                      <Nav.Link>Home</Nav.Link>
+                    </LinkContainer>
                   <LinkContainer to='/login'>
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>

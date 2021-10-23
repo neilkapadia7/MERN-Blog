@@ -1,33 +1,52 @@
-import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/blogsConstant'
-export const addMovies = (payload) => {
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS} from '../constants/blogsConstant'
+export const publishBlog = (payload) => {
     return {
-        type: ADD_MOVIES,
+        type: PUBLISH_BLOGS,
+        payload
+    }
+}
+export const publishBlogResult = (payload) => {
+    return {
+        type: PUBLISH_BLOGS_RESULT,
         payload
     }
 }
 
-export const moviesResult = (payload) => {
+export const aproveBlog = (payload) => {
     return {
-        type: MOVIES_RESULT,
+        type: APPROVE_BLOGS,
         payload
     }
 }
-export const addMoviesResult = (payload) => {
+export const aproveBlogResult = (payload) => {
     return {
-        type: ADD_MOVIES_RESULT,
+        type: APPROVE_BLOGS_RESULT,
         payload
     }
 }
 
-export const getMovies = () => {
+export const getBlogs = () => {
     return {
-        type: GET_MOVIES
+        type: GET_BLOGS
+    }
+}
+export const blogsResult = (payload) => {
+    return {
+        type: BLOGS_RESULT,
+        payload
     }
 }
 
-export const moviesError = (payload) => {
+export const blogError = (payload) => {
     return {
-        type: MOVIES_ERROR,
+        type: BLOGS_ERROR,
+        payload
+    }
+}
+
+export const removeError = (payload) => {
+    return {
+        type: REMOVE_ERRORS,
         payload
     }
 }

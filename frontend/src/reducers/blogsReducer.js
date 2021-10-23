@@ -1,58 +1,77 @@
-import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/blogsConstant'
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS} from '../constants/blogsConstant'
 
 let initialState = {
-    moviesData: [], 
+    blogsData: [], 
     loading: false, 
-    error: null
+    error: null,
+    myBlogs: [],
+    rejectedBlogs: []
 }
 
 export const blogsReducer = (state = initialState, action) => {
-  console.log(action.payload)
+  console.log('Action Payload',action.payload)
     switch (action.type) {
-        case GET_MOVIES:
+        case GET_BLOGS:
           return {
             ...state,
             loading: true,
-            moviesData: [],
+            blogsData: [],
             error: null
           }
-        case ADD_MOVIES:
+        case BLOGS_RESULT:
           return {
             ...state,
             loading: false,
-            moviesData: state.moviesData,
+            blogsData: action.payload,
+            error: null          
+          }
+        case PUBLISH_BLOGS:
+          return {
+            ...state,
+            loading: true,
             error: null
+          }
+        case PUBLISH_BLOGS_RESULT:
+          return {
+            ...state,
+            loading: false,
+            myBlogs: state.myBlogs.length > 0 ? [...state.myBlogs, action.payload] : [action.payload],
+            error: null          
+          }
+        case APPROVE_BLOGS:
+          return {
+            ...state,
+            loading: true,
+            error: null
+          }
+        case APPROVE_BLOGS_RESULT:
+          return {
+            ...state,
+            loading: false,
+            blogsData: state.blogsData.length > 0 ? [...state.blogsData, action.payload] : [action.payload],
+            error: null          
           }
         case SET_LOADING:
           return {
             ...state,
-            loading: null
-          }
-        case MOVIES_RESULT:
-          return {
-            ...state,
-            loading: false,
-            moviesData: action.payload,
-            error: null          
-          }
-        case ADD_MOVIES_RESULT:
-          return {
-            ...state,
-            loading: false,
-            moviesData: state.moviesData.length > 0 ? [...state.moviesData, action.payload] : [action.payload],
-            error: null          
-          }
-        case MOVIES_ERROR: 
-          return {
-            ...state,
-            moviesData: [],
-            loading: false,
-            error: action.payload
+            loading: true
           }
         case END_LOADING: 
           return {
             ...state,
             loading: false
+          }
+        case BLOGS_ERROR: 
+          return {
+            ...state,
+            loading: false,
+            error: action.payload
+          }
+        case REMOVE_ERRORS: 
+          return {
+            ...state,
+            loading: false,
+            error: null
           }
         default:
             return state;

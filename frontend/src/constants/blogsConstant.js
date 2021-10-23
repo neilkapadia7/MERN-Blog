@@ -1,7 +1,10 @@
-export const GET_MOVIES = 'GET_MOVIES';
-export const ADD_MOVIES = 'ADD_MOVIES';
-export const ADD_MOVIES_RESULT = 'ADD_MOVIES_RESULT';
+export const GET_BLOGS = 'GET_BLOGS';
+export const PUBLISH_BLOGS = 'PUBLISH_BLOGS';
+export const PUBLISH_BLOGS_RESULT = 'PUBLISH_BLOGS_RESULT';
+export const APPROVE_BLOGS = 'APPROVE_BLOGS';
+export const APPROVE_BLOGS_RESULT = 'APPROVE_BLOGS_RESULT';
 export const SET_LOADING = 'SET_LOADING';
-export const MOVIES_RESULT = 'MOVIES_RESULT';
-export const MOVIES_ERROR = 'MOVIES_ERROR';
+export const BLOGS_RESULT = 'BLOGS_RESULT';
+export const BLOGS_ERROR = 'BLOGS_ERROR';
 export const END_LOADING = 'END_LOADING';
+export const REMOVE_ERRORS = 'REMOVE_ERRORS';
