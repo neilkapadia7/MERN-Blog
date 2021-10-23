@@ -1,4 +1,4 @@
-import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE} from '../constants/blogsConstant'
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE, GET_PUBLISHED_BLOGS_RESULT, GET_PUBLISHED_BLOGS} from '../constants/blogsConstant'
 
 let initialState = {
     blogsData: [], 
@@ -6,6 +6,7 @@ let initialState = {
     error: null,
     myBlogs: [],
     rejectedBlogs: [],
+    publishedBlogs: [],
     blogMessage: null,
 }
 
@@ -24,6 +25,19 @@ export const blogsReducer = (state = initialState, action) => {
             ...state,
             loading: false,
             blogsData: action.payload,
+            error: null          
+          }
+        case GET_PUBLISHED_BLOGS:
+          return {
+            ...state,
+            loading: true,
+            error: null
+          }
+        case GET_PUBLISHED_BLOGS_RESULT:
+          return {
+            ...state,
+            loading: false,
+            publishedBlogs: action.payload.blogs,
             error: null          
           }
         case PUBLISH_BLOGS:

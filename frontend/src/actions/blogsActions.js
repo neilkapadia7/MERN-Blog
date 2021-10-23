@@ -1,4 +1,4 @@
-import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE} from '../constants/blogsConstant'
+import {GET_BLOGS, PUBLISH_BLOGS, PUBLISH_BLOGS_RESULT, APPROVE_BLOGS, APPROVE_BLOGS_RESULT, SET_LOADING, BLOGS_RESULT, BLOGS_ERROR, END_LOADING, REMOVE_ERRORS, REMOVE_MESSAGE, GET_PUBLISHED_BLOGS_RESULT, GET_PUBLISHED_BLOGS} from '../constants/blogsConstant'
 export const publishBlog = (payload) => {
     return {
         type: PUBLISH_BLOGS,
@@ -33,6 +33,18 @@ export const getBlogs = () => {
 export const blogsResult = (payload) => {
     return {
         type: BLOGS_RESULT,
+        payload
+    }
+}
+
+export const getPublishedBlogs = () => {
+    return {
+        type: GET_PUBLISHED_BLOGS
+    }
+}
+export const getPublishedBlogsResult = (payload) => {
+    return {
+        type: GET_PUBLISHED_BLOGS_RESULT,
         payload
     }
 }

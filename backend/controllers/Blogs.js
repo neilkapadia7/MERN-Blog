@@ -60,7 +60,7 @@ module.exports = {
             if(!checkUser || (checkUser && checkUser.userType !== 1)) 
                 return Responder.respondWithFalseSuccess(req, res, {}, 'Not Enough Permissions');
 
-            const blogs = await Blogs.find({isApproved: false})
+            const blogs = await Blogs.find({isApproved: false}).populate('userId', 'name email')
             let count = blogs.length
                 
             return Responder.respondWithSuccess(req, res, {blogs, count}, 'Published Blogs Fetched')   

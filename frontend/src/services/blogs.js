@@ -52,3 +52,19 @@ export const getBlogs = async () => {
     }
 }
 
+export const getPublishedBlogs = async () => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const res = await axios.get(`api/blogs/get-requested-blogs`)
+        return res.data;
+            
+    } catch (err) {
+        console.log(err)
+        return err
+    }
+}
+
