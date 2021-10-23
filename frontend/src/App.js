@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Login from './components/auth/Login';
 import Header from './components/general/Header';
 import Footer from './components/general/Footer';
-import HomeScreen from './components/movies/home';
-import FavouritesScreen from './components/movies/Favourites';
+import HomeScreen from './components/blogs/home';
+import FavouritesScreen from './components/blogs/Favourites';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <Header />
       <main className='py-5'>
         <Container>
+          <Route path='/' component={HomeScreen} exact/>
           <Route path='/login' component={Login} exact/>
-          <Route path='/discover' component={HomeScreen} exact/>
           <Route path='/discover/popular' component={HomeScreen} exact/>
           <Route path='/discover/latest' component={HomeScreen} exact/>
           <Route path='/discover/favourites' component={FavouritesScreen} exact/>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const favouritesSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true},
     isApproved: {type: Boolean, default: false},
     title: {type: String},
@@ -16,6 +16,6 @@ const favouritesSchema = new mongoose.Schema({
     toObject: { virtuals: true },
 });
 
-const Favourites = mongoose.model('Favourites', favouritesSchema);
+const Blogs = mongoose.model('Blogs', blogSchema);
 
-module.exports = Favourites;
+module.exports = Blogs;

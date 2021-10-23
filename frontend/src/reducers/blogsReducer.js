@@ -1,4 +1,4 @@
-import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/moviesConstant'
+import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/blogsConstant'
 
 let initialState = {
     moviesData: [], 
@@ -6,7 +6,7 @@ let initialState = {
     error: null
 }
 
-export const moviesReducer = (state = initialState, action) => {
+export const blogsReducer = (state = initialState, action) => {
   console.log(action.payload)
     switch (action.type) {
         case GET_MOVIES:

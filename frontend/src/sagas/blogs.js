@@ -1,7 +1,7 @@
 import { call, put, takeLatest, all, select} from 'redux-saga/effects'
-import {GET_MOVIES, ADD_MOVIES} from '../constants/moviesConstant'
-import * as MoviesService from '../services/movies'
-import * as MoviesAction from '../actions/moviesActions'
+import {GET_MOVIES, ADD_MOVIES} from '../constants/blogsConstant'
+import * as MoviesService from '../services/blogs'
+import * as MoviesAction from '../actions/blogsActions'
 
 export function* getMoviesSaga() {
     try {

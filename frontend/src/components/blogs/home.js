@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 import {Row, Col} from 'react-bootstrap';
 import Message from '../general/Message';
 import Loader from '../general/Loader';
-import Movie from './Movie'
+import Movie from './Blog'
 import { useLocation } from 'react-router-dom';
-import {trendingMovies, originalsMovies, topRatedMovies} from '../../services/movies'
+import {trendingMovies, originalsMovies, topRatedMovies} from '../../services/blogs'
 
 
 const HomeScreen = (props) => {

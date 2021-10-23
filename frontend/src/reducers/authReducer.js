@@ -3,7 +3,7 @@ import {USER_SIGNIN, USER_SIGNUP, USER_LOGOUT, USER_SIGNIN_RESULT, USER_SIGNUP_R
 let initialState = {
     isLoggedIn: false, 
     loading: false, 
-    error: null
+    error: null,
 }
 
 export const userAuthenticationReducer = (state = initialState, action) => {

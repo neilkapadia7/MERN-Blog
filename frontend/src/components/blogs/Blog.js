@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {addMovies} from '../../actions/moviesActions';
+import {addMovies} from '../../actions/blogsActions';
 import {useDispatch} from 'react-redux';
 
 

@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects'
 import auth from './auth'
-import movies from './movies'
+import blogs from './blogs'
 // import calorie from './calorieSaga'
 // import goal from './goalSaga'
 // import workout from './workoutSaga'
@@ -9,6 +9,6 @@ import movies from './movies'
 export default function* IndexSagas () {
   yield all([
     auth(),
-    movies(),
+    blogs(),
   ])
 }

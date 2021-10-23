@@ -1,4 +1,4 @@
-import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/moviesConstant'
+import {GET_MOVIES, SET_LOADING, MOVIES_RESULT, MOVIES_ERROR, END_LOADING, ADD_MOVIES_RESULT, ADD_MOVIES} from '../constants/blogsConstant'
 export const addMovies = (payload) => {
     return {
         type: ADD_MOVIES,

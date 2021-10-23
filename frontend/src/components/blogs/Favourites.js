@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 import {Row, Col} from 'react-bootstrap';
 import Message from '../general/Message';
 import Loader from '../general/Loader';
-import Movie from './Movie'
-import {getMovies} from '../../actions/moviesActions'
+import Blog from './Blog'
+import {getMovies} from '../../actions/blogsActions'
 
 
 const FavouritesScreen = (props) => {
@@ -33,7 +33,7 @@ const FavouritesScreen = (props) => {
                 <Row>
                     {moviesData.length > 0 && moviesData.map(movie => (
                         <Col key={movie.id} sm={12} md={6} lg={4} xl={3}>
-                        <Movie movie={movie} isLoggedIn isFavouritePage={true}/>
+                        <Blog movie={movie} isLoggedIn isFavouritePage={true}/>
                         </Col>
                     ))}
                 </Row>

@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import {composeWithDevTools} from 'redux-devtools-extension'
 import rootSaga from './sagas'
 import {userAuthenticationReducer} from './reducers/authReducer'
-import {moviesReducer} from './reducers/moviesReducer'
+import {blogsReducer} from './reducers/blogsReducer'
 import setAuthToken from './services/setToken'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
@@ -21,7 +21,7 @@ const initialState = {
 
 const reducers = combineReducers({
     user: userAuthenticationReducer,
-    movies: moviesReducer,
+    blogs: blogsReducer,
 })
 
 
