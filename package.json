@@ -1,0 +1,39 @@
+{
+    "name": "apploreblog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "_moduleAliases": {
+        "@root": ".",
+        "@controllers": "./backend/controllers",
+        "@models": "./backend/models",
+        "@service": "./backend/service",
+        "@routes": "./backend/routes",
+        "@config": "./backend/config",
+        "@middleware": "./backend/middleware",
+        "@validation": "./backend/validation"
+    },
+    "scripts": {
+        "start": "node backend/server",
+        "server": "nodemon backend/server",
+        "client": "npm start --prefix frontend",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.12.2",
+        "jsonwebtoken": "^8.5.1",
+        "module-alias": "^2.2.2",
+        "moment": "^2.29.1",
+        "mongoose": "^6.0.10"
+    },
+    "devDependencies": {
+        "concurrently": "^6.3.0",
+        "nodemon": "^2.0.13"
+    }
+}

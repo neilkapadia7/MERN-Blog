@@ -1,0 +1,8 @@
+export const USER_SIGNIN = 'USER_SIGNIN';
+export const USER_SIGNUP = 'USER_SIGNUP';
+export const USER_SIGNIN_RESULT = 'USER_SIGNIN_RESULT';
+export const USER_SIGNUP_RESULT = 'USER_SIGNUP_RESULT';
+export const USER_SIGNIN_ERROR = 'USER_SIGNIN_ERROR';
+
+
+export const USER_LOGOUT = 'USER_LOGOUT';
