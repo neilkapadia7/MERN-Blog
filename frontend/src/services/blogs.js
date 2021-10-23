@@ -10,7 +10,7 @@ export const publishBlog = async (data) => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post(`${baseurl}api/blogs/add`, data,  config )
+        const res = await axios.post(`api/blogs/add`, data,  config )
         return res.data;
             
     } catch (err) {
@@ -26,7 +26,7 @@ export const approveBlog = async (data) => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post(`${baseurl}api/blogs/approve-blog`, data,  config )
+        const res = await axios.post(`api/blogs/approve-blog`, data,  config )
         return res.data;
             
     } catch (err) {
@@ -42,7 +42,7 @@ export const getBlogs = async () => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post(`${baseurl}get-approved-blogs`)
+        const res = await axios.get(`api/blogs/get-approved-blogs`)
         console.log('Backend Res Favourites:::', res)
         return res.data;
             

@@ -26,8 +26,8 @@ module.exports = {
                 userType: 2,
             });
 
-            let token = Token.generateToken(user._id);
-            user.token = token;
+            // let token = Token.generateToken(user._id);
+            // user.token = token;
             await user.save()
             
             return Responder.respondWithSuccess(req, res, {
@@ -36,7 +36,7 @@ module.exports = {
                 email: user.email,
                 phone: user.phone,
                 isAdmin: user.userType === 1 ? true : false, 
-                token,
+                // token,
             }, 'Successful')    
         }
         catch(err) {

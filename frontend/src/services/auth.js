@@ -25,7 +25,7 @@ export const userSignUp = async (data) => {
                 'Content-Type': 'application/json'
             }
         }
-        const res = await axios.post('api/user/signup', data,  config )
+        const res = await axios.post('api/user/addUser', data,  config )
         console.log('Backend Res :::', res)
         return res.data;
             

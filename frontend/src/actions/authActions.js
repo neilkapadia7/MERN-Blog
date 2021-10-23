@@ -1,4 +1,4 @@
-import {USER_SIGNIN, USER_SIGNUP, USER_LOGOUT, USER_SIGNIN_RESULT, USER_SIGNUP_RESULT, USER_SIGNUP_ERROR, USER_SIGNIN_ERROR} from '../constants/authConstants'
+import {USER_SIGNIN, USER_SIGNUP, USER_LOGOUT, USER_SIGNIN_RESULT, USER_SIGNUP_RESULT, USER_SIGNUP_ERROR, USER_SIGNIN_ERROR, REMOVE_MESSAGE} from '../constants/authConstants'
 export const userSignIn = (payload) => {
     return {
         type: USER_SIGNIN,
@@ -21,8 +21,13 @@ export const userSignUp = (payload) => {
     }
 }
 
+export const removeMessage = () => {
+    return {
+        type: REMOVE_MESSAGE
+    }
+}
+
 export const userSignUpResult = (payload) => {
-    localStorage.setItem('userInfo', JSON.stringify(payload));
     return {
         type: USER_SIGNUP_RESULT,
         payload

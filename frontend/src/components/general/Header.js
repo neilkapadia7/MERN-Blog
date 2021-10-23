@@ -31,6 +31,25 @@ const Header = (props) => {
                     <LinkContainer to='/'exact>
                       <Nav.Link>Home</Nav.Link>
                     </LinkContainer>
+                    
+                    {userInfo.isAdmin ?
+                      (
+                        <>
+                          <LinkContainer to='/request'exact>
+                            <Nav.Link>Requested Blogs</Nav.Link>
+                          </LinkContainer>
+                          <LinkContainer to='/add-writer'exact>
+                            <Nav.Link>Add Writer</Nav.Link>
+                          </LinkContainer>
+                        </>
+                      )
+
+                      : 
+                      <LinkContainer to='/add-blog'exact>
+                        <Nav.Link>Add Blog</Nav.Link>
+                      </LinkContainer>
+                    }
+
                     <Nav.Link onClick={() => 
                         dispatch(logout())
                     }>Logout</Nav.Link>

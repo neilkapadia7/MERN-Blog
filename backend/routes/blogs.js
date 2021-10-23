@@ -23,7 +23,7 @@ router.get('/get-requested-blogs',
 );
 
 router.get('/get-approved-blogs',
-    Auth,
+    // Auth,
     getApprovedBlogs
 );
 

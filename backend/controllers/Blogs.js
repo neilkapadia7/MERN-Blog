@@ -77,9 +77,9 @@ module.exports = {
 */ 
     async getApprovedBlogs (req, res) {    
         try {
-            const checkUser = await User.findOne({_id: req.user._id});
-            if(!checkUser || (checkUser && checkUser.userType !== 1)) 
-                return Responder.respondWithFalseSuccess(req, res, {}, 'Not Enough Permissions');
+        //     const checkUser = await User.findOne({_id: req.user._id});
+        //     if(!checkUser || (checkUser && checkUser.userType !== 1)) 
+        //         return Responder.respondWithFalseSuccess(req, res, {}, 'Not Enough Permissions');
 
             const blogs = await Blogs.find({isApproved: true})
             let count = blogs.length
