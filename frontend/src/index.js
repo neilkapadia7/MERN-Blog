@@ -6,6 +6,13 @@ import './bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import store from './store'
+import setAuthToken from './services/setToken'
+
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
+if(userInfoFromStorage) 
+  setAuthToken(userInfoFromStorage.token);
+else 
+  setAuthToken(null);
 
 ReactDOM.render(
   <Provider store={store}>

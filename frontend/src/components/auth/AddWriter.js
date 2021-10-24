@@ -20,6 +20,9 @@ const AddWriter = ({history}) => {
     const {loading, error, userInfo, userMessage} = user;
     
     useEffect(() => {
+        if(!userInfo) {
+            history.push('/login')
+        }
         if(userMessage) {
             setEmail('')
             setPassword('')
@@ -29,7 +32,7 @@ const AddWriter = ({history}) => {
             setMessage(null)
             setTimeout(() => {dispatch(removeMessage())}, 4000)
         }
-    }, [userMessage])
+    }, [userMessage, userInfo])
 
     const submitRegisterHandler = (e) => {
         e.preventDefault();

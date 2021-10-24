@@ -1,44 +1,59 @@
-import React from 'react'
-import {Card} from 'react-bootstrap';
+import React, {useEffect, useState} from 'react'
+import {Card, Button, Row, Container} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-// import {addMovies} from '../../actions/blogsActions';
+import { useHistory } from 'react-router-dom';
+import moment from 'moment';
 import {useDispatch} from 'react-redux';
+import {getBlogById} from '../../services/blogs';
+import Message from '../general/Message';
+import Loader from '../general/Loader';
 
 
-const Movies = ({blog, isLoggedIn, isFavouritePage}) => {
+const Blog = () => {
+    const [blog, setBlog] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [message, setMessage] = useState(null)
     const dispatch = useDispatch();
+    const history = useHistory()
+    
+    useEffect(() => {
+        const getBlog = async () => {
+            let id = history.location.pathname.split('/api/')[1]
+            let blogData = await getBlogById(id);
+            if(blogData) {
+                if(blogData.message === "Blog Successfully Fetched") {
+                    setBlog(blogData.data)
+                } else {
+                    setMessage('Blog Not Fetched')
+                }
+                setLoading(false)
+            }
+        } 
+
+        getBlog()
+    }, [history])
+
+    useEffect(() => console.log(blog), [blog])
+
     return (
-        <Card className='my-3 p-3 rounded'>
-            {/* <Link to={`/blog/${blog._id}`}> */}
-                <Card.Img src={`${process.env.REACT_APP_IMAGE_BASE_URL}${blog.backdrop_path}`} variant='top' />
-            {/* </Link> */}
-
-        <Card.Body>
-            {/* <Link to={`/blog/${blog._id}`}> */}
-                <Card.Title as='div'>
-                    <strong>{blog.first_air_date}</strong>
-                </Card.Title>
-            {/* </Link> */}
-                <Card.Title as='div'>
-                    <strong>{blog.overview.substring(0,50)}...</strong>
-                </Card.Title>
-                <Card.Title as='h5'>
-                    <strong>Rating : {blog.vote_average}</strong>
-                </Card.Title>
-
-                <Card.Title as='p'>
-                </Card.Title>
-            {/* <Card.Text as='div'>
-                <Rating value={blog.rating} text={`${blog.numReviews} reviews`}/>
-            </Card.Text> */}
-
-            <Card.Text as='h3'>
-                {blog.name}
-            </Card.Text>
-            {/* {isLoggedIn && !isFavouritePage && <p style={{color: 'red', paddingTop: '20px', cursor:'pointer'}} onClick={() => dispatch(addMovies(blog))}>Add to Favourite</p>} */}
-        </Card.Body>
-        </Card>
+        <>
+        {loading && <Loader />}
+        {!loading && !blog && <Message variant='danger'>Blog Not Found</Message>}
+        <Container>
+            {!loading && blog && (
+                <>
+                    <Row>
+                        <h3>{blog.title}</h3>
+                    </Row>
+                    <Row>
+                        <p>{blog.userId.name} {moment(blog.approvedOn).format('DD MMMM YYYY HH:mm')}</p>
+                    </Row>
+                    <Row><p>{blog.content}</p></Row>
+                </>
+            )}
+        </Container>
+        </>
     )
 }
 
-export default Movies
+export default Blog

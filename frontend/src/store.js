@@ -8,9 +8,10 @@ import setAuthToken from './services/setToken'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 
-if(userInfoFromStorage) {
+if(userInfoFromStorage) 
   setAuthToken(userInfoFromStorage.token);
-}
+else 
+  setAuthToken(null);
 
 const initialState = {
     user: { 

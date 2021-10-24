@@ -4,6 +4,7 @@ import {Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../actions/authActions'
+import axios from 'axios'
 
 const Header = (props) => {
   const user = useSelector(state => state.user);
@@ -53,6 +54,7 @@ const Header = (props) => {
                     <Nav.Link onClick={() => {
                         dispatch(logout())
                         history.push('/login')
+                        delete axios.defaults.headers.common['Authorization'];
                       }  
                     }>Logout</Nav.Link>
                     </>

@@ -24,7 +24,7 @@ export const blogsReducer = (state = initialState, action) => {
           return {
             ...state,
             loading: false,
-            blogsData: action.payload,
+            blogsData: action.payload.blogs,
             error: null          
           }
         case GET_PUBLISHED_BLOGS:
@@ -69,7 +69,9 @@ export const blogsReducer = (state = initialState, action) => {
           return {
             ...state,
             loading: false,
-            blogsData: state.blogsData.length > 0 ? [...state.blogsData, action.payload] : [action.payload],
+            blogsData: state.blogsData.length > 0 ? [...state.blogsData, action.payload.data] : [action.payload.data],
+            publishedBlogs: state.publishedBlogs.length > 1 ? state.publishedBlogs.filter(blog => blog.id != action.payload.data._id) : [],
+            blogMessage: 'Blog is Now Live',
             error: null          
           }
         case SET_LOADING:

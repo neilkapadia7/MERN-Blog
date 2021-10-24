@@ -68,3 +68,19 @@ export const getPublishedBlogs = async () => {
     }
 }
 
+export const getBlogById = async (payload) => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const res = await axios.get(`blogs/get-blog/${payload}`)
+        return res.data;
+            
+    } catch (err) {
+        console.log(err)
+        return err
+    }
+}
+

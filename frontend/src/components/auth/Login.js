@@ -5,6 +5,7 @@ import Message from '../general/Message';
 import Loader from '../general/Loader';
 import FormContainer from '../general/FormContainer';
 import {userSignIn,userSignUp} from '../../actions/authActions';
+import axios from 'axios'
 
 const Login = ({history}) => {
     const [email, setEmail] = useState('');
@@ -19,6 +20,7 @@ const Login = ({history}) => {
     useEffect(() => {
         if(userInfo) {
             history.push('/');
+            axios.defaults.headers.common['Authorization'] = `Bearer ${userInfo.token}`;
         }
     }, [history, userInfo]);
 

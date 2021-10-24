@@ -34,8 +34,10 @@ const AddWriter = () => {
         }
         else {
             setMessage(null);
-            console.log({title, content})
-            dispatch(publishBlog({title, content}));
+            let replacedContent = content.replaceAll('\n', '<br />')
+            // console.log(replacedContent)
+            // console.log({title, content})
+            dispatch(publishBlog({title, content: replacedContent}));
         }
     }
     

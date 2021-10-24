@@ -3,8 +3,10 @@ const router = express.Router()
 const Validation = require('@validation/userValidation')
 const Responder = require('@service/response')
 const {addUser, login} = require('@controllers/Auth')
+const Auth = require('@middleware/Auth')
 
 router.post('/addUser',
+    Auth,
     Validation.signUp(),
     Responder.validate.bind(Responder),
     addUser

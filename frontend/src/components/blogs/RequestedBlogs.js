@@ -3,12 +3,14 @@ import {Form, Button, Table} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Message from '../general/Message';
 import Loader from '../general/Loader';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import FormContainer from '../general/FormContainer';
-import {publishBlog, removeMessage, getPublishedBlogs} from '../../actions/blogsActions';
+import {publishBlog, removeMessage, getPublishedBlogs, aproveBlog} from '../../actions/blogsActions';
 
 const AddWriter = () => {
     const dispatch = useDispatch();
+     const history = useHistory()
 
     const blogs = useSelector(state => state.blogs)
     const {blogMessage, publishedBlogs, loading} = blogs;
@@ -36,18 +38,20 @@ const AddWriter = () => {
                     <th>Email</th>
                     <th>Title</th>
                     <th>Published On</th>
+                    <th>View</th>
                     <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 {publishedBlogs.length > 0 && publishedBlogs.map((blog, key) => 
-                    (<tr>
+                    (<tr key={key}>
                         <td>{key}</td>
                         <td>{blog.userId.name}</td>
                         <td>{blog.userId.email}</td>
                         <td>{blog.title}</td>
                         <td>{moment(blog.publishedOn).format('DD MMMM YYYY HH:mm')}</td>
-                        <td onClick={() => console.log(blog._id)} style={{fontWeight:'900', color:'darkred'}}>Go Live</td>
+                        <td onClick={() => history.push(`/api/${blog._id}`)}>Go To</td>
+                        <td onClick={() => dispatch(aproveBlog({blogId: blog._id}))} style={{fontWeight:'900', color:'darkred'}}>Go Live</td>
                     </tr>)
                 
                 )}

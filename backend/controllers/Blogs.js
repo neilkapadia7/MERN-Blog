@@ -49,6 +49,24 @@ module.exports = {
         }
     },
 
+/**
+    @route GET api/blogs/get-blog/:id
+    @description Get Single Blog
+*/ 
+    async getBlogById (req, res) {  
+        try {
+            const blog = await Blogs.findOne({_id: req.params.id}).populate('userId', 'name email')
+            if(!blog)    
+                return Responder.respondWithFalseSuccess(req, res, [] , 'Blog Not Found')
+
+            return Responder.respondWithSuccess(req, res, blog, 'Blog Successfully Fetched')   
+            
+        } catch (err) {
+            console.log(err)
+            return Responder.respondWithError(req, res, 'Error')
+        }
+    },
+
 
 /**
     @route GET api/blogs/get-requested-blogs

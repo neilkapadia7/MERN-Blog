@@ -3,7 +3,7 @@ const router = express.Router()
 const Validation = require('@validation/blogsValidation')
 const Responder = require('@service/response')
 const Auth = require('@middleware/Auth')
-const {publishBlogs, getBlogs, approveBlog, getApprovedBlogs, getPublishedBlogs} = require('@controllers/Blogs')
+const {publishBlogs, getBlogs, approveBlog, getApprovedBlogs, getPublishedBlogs, getBlogById} = require('@controllers/Blogs')
 
 router.post('/add',
     Auth,
@@ -32,6 +32,10 @@ router.post('/approve-blog',
     Validation.approveBlogs(),
     Responder.validate.bind(Responder),
     approveBlog
+);
+
+router.get('/get-blog/:id',
+    getBlogById
 );
 
 module.exports = router
