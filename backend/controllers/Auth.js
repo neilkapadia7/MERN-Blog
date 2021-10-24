@@ -15,8 +15,11 @@ module.exports = {
         try {
             const {name, email, phone, password} = req.body;
             const checkUser = await User.findOne({email});
+            const checkAdmin = await User.findOne({_id: req.user.id});
             if(checkUser) 
                 return Responder.respondWithFalseSuccess(req, res, {}, 'User Already Exists');
+            if(checkAdmin.userType !== 1) 
+                return Responder.respondWithFalseSuccess(req, res, {}, 'Not Enough Permission!');
 
             const user = new User({
                 name,
