@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
-
+import { Markup } from 'interweave';
 
 const AllBlogs = ({blog, isLoggedIn, isFavouritePage}) => {
     const dispatch = useDispatch();
@@ -16,7 +16,8 @@ const AllBlogs = ({blog, isLoggedIn, isFavouritePage}) => {
                 <Card.Title as="h4">{blog.title}</Card.Title>
                 <Card.Text as="p" style={{fontSize: '12px'}}>{moment(blog.approvedOn).format('DD MMMM YYYY HH:mm')}</Card.Text>
                 <Card.Text style={{fontSize: '17px'}}>
-                    {blog.content.substring(0, 100)}....
+                    <Markup content={blog.content.substring(0, 100)} />{blog.content.length > 100 && `....`}
+                    {/* {blog.content.substring(0, 100)} */}
                 </Card.Text>
                 <Button variant="primary" onClick={() => history.push(`/api/${blog._id}`)}>Read More</Button>
             </Card.Body>

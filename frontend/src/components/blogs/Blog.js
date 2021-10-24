@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {getBlogById} from '../../services/blogs';
 import Message from '../general/Message';
 import Loader from '../general/Loader';
+import { Markup } from 'interweave';
 
 
 const Blog = () => {
@@ -46,9 +47,12 @@ const Blog = () => {
                         <h3>{blog.title}</h3>
                     </Row>
                     <Row>
-                        <p>{blog.userId.name} {moment(blog.approvedOn).format('DD MMMM YYYY HH:mm')}</p>
+                        <p style={{fontSize:'13px', fontWeight: '600'}}>{blog.userId.name} {moment(blog.approvedOn).format('DD MMMM YYYY HH:mm')}</p>
                     </Row>
-                    <Row><p>{blog.content}</p></Row>
+                    <Row>
+                        <Markup content={blog.content} />
+                    {/* {blog.content.split("<p>").map(e => `<p>${e}</p>\n`)} */}
+                    </Row>
                 </>
             )}
         </Container>
